@@ -48,3 +48,24 @@ The appliation is runing on `http://localhost:8080`. You should be able to acces
 - GET /api/users/{id}
 - PUT /api/users/{id}
 - DELETE /api/users/{id}
+
+## Deploy on Heroku
+
+1. Create the application in the Heroku admin console
+2. If not already done, provide Credit Card infos
+3. Type the command in the directory app on your machine `heroku addons:add mongolab`
+4. Visit again your Heroku admin console to view the app details. You will find a link to see the admin console of the addon.
+5. Once you are in the admin console of the addon, you can create a new database user. Do it with the following info:
+	- User: `cityengagement`
+	- Password: `cityengagement`
+6. Configure environment variable to start the app with the following commands:
+	- Set the user: `heroku config:set SB_MONGO_USER=cityengagement`
+	- Set the password: `heroku config:set SB_MONGO_PASSWORD=cityengagement`
+	- Set the db name: `heroku config:set SB_MONGO_DB={dbName}`
+	- Set the host: `heroku config:set SB_MONGO_HOST={host}`
+	- Set the port: `heroku config:set SB_MONGO_PORT={port}`
+	- Set the environment: `heroku config:set SB_ENV=production`
+
+
+9. Finally, you can push your code to Heroku
+	- cmd: `git push heroku master`
