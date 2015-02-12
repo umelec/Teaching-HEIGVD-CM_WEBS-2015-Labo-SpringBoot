@@ -65,7 +65,5 @@ The appliation is runing on `http://localhost:8080`. You should be able to acces
 	- Set the host: `heroku config:set SB_MONGO_HOST={host}`
 	- Set the port: `heroku config:set SB_MONGO_PORT={port}`
 	- Set the environment: `heroku config:set SB_ENV=production`
-
-
-9. Finally, you can push your code to Heroku
+7. Finally, you can push your code to Heroku
 	- cmd: `git push heroku master`
