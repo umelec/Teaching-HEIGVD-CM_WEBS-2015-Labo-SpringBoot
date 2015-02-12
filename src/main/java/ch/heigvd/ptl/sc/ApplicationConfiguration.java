@@ -20,7 +20,7 @@ public class ApplicationConfiguration {
 	@Value("${mongo.port}")
 	private int port;
 	
-	@Value("$mongo.host")
+	@Value("${mongo.host}")
 	private String host;
 	
 	public String getEnv() {
