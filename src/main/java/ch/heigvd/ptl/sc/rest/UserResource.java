@@ -1,7 +1,7 @@
-package ch.heigvd.ptl.sc.model.rest;
+package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
-import ch.heigvd.ptl.sc.model.persistence.UserRepository;
+import ch.heigvd.ptl.sc.persistence.UserRepository;
 import ch.heigvd.ptl.sc.converter.UserConverter;
 import ch.heigvd.ptl.sc.model.User;
 import ch.heigvd.ptl.sc.to.UserTO;
