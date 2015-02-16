@@ -21,9 +21,9 @@ Base your implementation on the info from [iFlux blog's post](http://www.iflux.i
 
 ## Configure
 
-First, rename the root package to a name of your choice.
+Rename the root package to a name of your choice and change the groupId in `pom.xml` to an appropriate one.
 
-Then, change the database name in the class `MongoConfiguration`.
+If you want, you can change the DB name in the property file present in `src/main/resources`. The other configuration values work fine for development.
 
 ## Install / Deploy / Run
 
