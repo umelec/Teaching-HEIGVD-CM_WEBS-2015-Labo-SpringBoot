@@ -1,8 +1,11 @@
 package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.model.User;
+import ch.heigvd.ptl.sc.model.IssueType;
 import ch.heigvd.ptl.sc.persistence.UserRepository;
+import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
 import ch.heigvd.ptl.sc.converter.UserConverter;
+import ch.heigvd.ptl.sc.converter.IssueTypeConverter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,6 +70,10 @@ public class DataResource {
 			new String[] { "citizen", "staff" }
 		)
 	);
+        
+        private static final String[] ISSUETYPE_NAME = new String[] {
+		"broken streetlight", "dangerous crossroad ", "graffiti", "broken street"
+	};
 	
 	private static final float MIN_LAT = 46.766129f;
 	private static final float MAX_LAT = 46.784234f;
@@ -75,13 +82,17 @@ public class DataResource {
 	
 	@Autowired
 	private UserRepository userRepository;
+        private IssueTypeRepository issueTypeRepository;
 	
 	@Autowired
 	private UserConverter userConverter;
+        private IssueTypeConverter issueTypeConverter;
 	
 	private List<User> users = new ArrayList<>();
 	private List<User> citizen = new ArrayList<>();
 	private List<User> staff = new ArrayList<>();
+        
+        private List<IssueType> issuesTypes = new ArrayList<>();
 	
 	private float random (float low, float high) {
     return rand.nextFloat() * (high - low) + low;
@@ -137,8 +148,23 @@ public class DataResource {
 			}
 		}
 	}
-	
-	@Path("/populate")
+        
+        private void populateIssueType() {
+            for (int i = 0; i < 15; i++) {
+                IssueType it = new IssueType();
+                
+                it.setName(ISSUETYPE_NAME[randomInt(0, ISSUETYPE_NAME.length)]);
+                
+                it = issueTypeRepository.save(it);
+                issuesTypes.add(it);
+                
+                
+                
+            }
+}
+        
+        
+        @Path("/populate")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response populate() throws ParseException {
@@ -148,4 +174,17 @@ public class DataResource {
 		
 		return Response.ok().build();
 	}
+	
+	@Path("/populateissuetype")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response populateIT() throws ParseException {
+		issueTypeRepository.deleteAll();
+
+		populateUsers();
+		
+		return Response.ok().build();
+	}
+        
+      
 }
