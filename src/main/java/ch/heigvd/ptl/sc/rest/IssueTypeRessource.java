@@ -1,10 +1,10 @@
 package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
-import ch.heigvd.ptl.sc.persistence.UserRepository;
-import ch.heigvd.ptl.sc.converter.UserConverter;
+import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
+import ch.heigvd.ptl.sc.converter.IssueTypeConverter;
 import ch.heigvd.ptl.sc.model.User;
-import ch.heigvd.ptl.sc.to.UserTO;
+import ch.heigvd.ptl.sc.to.IssueTypeTO;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,62 +22,16 @@ import org.springframework.stereotype.Component;
 @Path("/issuestypes")
 public class IssueTypeRessource {
 	@Autowired
-	private UserRepository userRepository;
+	private IssueTypeRepository issueTypeRepository;
 	
 	@Autowired
-	private UserConverter userConverter;
+	private IssueTypeConverter issueTypeConverter;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response findAll() {
-		return Response.ok(userConverter.convertSourceToTarget(userRepository.findAll())).build();
+		return Response.ok(issueTypeConverter.convertSourceToTarget(issueTypeRepository.findAll())).build();
 	}
-
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(UserTO userTO) {
-		User user = userRepository.save(userConverter.convertTargetToSource(userTO));
-		
-		return Response.ok(userConverter.convertSourceToTarget(user)).status(201).build();
-	}
-	
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") String id) {
-		User user = userRepository.findOne(id);
-		
-		if (user == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		return Response.ok(userConverter.convertSourceToTarget(user)).build();
-	}
-	
-	@PUT
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") String id, UserTO userTO) {
-		User user = userRepository.findOne(id);
-
-		if (user == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		userConverter.fillSourceFromTarget(user, userTO);
-		
-		user = userRepository.save(user);
-
-		return Response.ok(userConverter.convertSourceToTarget(user)).build();
-	}
-
-	@DELETE
-	@Path("/{id}")
-	public Response delete(@PathParam("id") String id) {
-		userRepository.delete(id);
-		return Response.ok().status(204).build();
-	}
+        
 }

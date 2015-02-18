@@ -16,6 +16,10 @@ public class IssueTypeTO {
         public String getName() {
 		return name;
 	}
+        
+          public String setName(String name) {
+		return this.name = name;
+	}
 
 	public List<String> getRoles() {
 		return roles;
