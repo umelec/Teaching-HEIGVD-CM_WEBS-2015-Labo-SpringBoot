@@ -10,6 +10,6 @@ package ch.heigvd.ptl.sc.model;
  *
  * @author Robert
  */
-public class IssueType {
+public class Action {
     
 }

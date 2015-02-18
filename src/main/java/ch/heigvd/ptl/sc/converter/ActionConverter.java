@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package ch.heigvd.ptl.sc.model;
+package ch.heigvd.ptl.sc.converter;
 
 /**
  *
  * @author Robert
  */
-public class IssueType {
+public class ActionConverter {
     
 }

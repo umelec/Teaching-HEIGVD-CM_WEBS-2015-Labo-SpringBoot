@@ -1,5 +1,9 @@
 # Smart City - Citizen Engagement - Spring Boot Skeleton
 
+## Students
+	- Fabrice Clerc
+	- Robert di Rosa
+
 ## Introduction
 
 The implementation is done with:

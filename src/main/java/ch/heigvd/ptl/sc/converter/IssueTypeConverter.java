@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package ch.heigvd.ptl.sc.converter;
 
 import ch.heigvd.ptl.sc.model.IssueType;
@@ -62,4 +63,20 @@ public class IssueTypeConverter {
 		}
 		source.setRoles(roles);
 	}
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package ch.heigvd.ptl.sc.converter;
+
+/**
+ *
+ * @author Robert
+ */
+public class IssueTypeConverter {
+    
+>>>>>>> 99731598359481afedc13eeff76d2b28ce5ef0af
 }
