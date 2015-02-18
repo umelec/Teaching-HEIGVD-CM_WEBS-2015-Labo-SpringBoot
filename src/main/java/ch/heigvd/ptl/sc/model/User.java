@@ -16,7 +16,7 @@ public class User {
 	protected List<String> roles;
 	
 	public String getFirstname() {
-		return firstname;
+		return firstname; 
 	}
 
 	public void setFirstname(String firstname) {
