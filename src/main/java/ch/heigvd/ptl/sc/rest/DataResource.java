@@ -181,7 +181,7 @@ public class DataResource {
 	public Response populateIT() throws ParseException {
 		issueTypeRepository.deleteAll();
 
-		populateUsers();
+		populateIssueType();
 		
 		return Response.ok().build();
 	}
