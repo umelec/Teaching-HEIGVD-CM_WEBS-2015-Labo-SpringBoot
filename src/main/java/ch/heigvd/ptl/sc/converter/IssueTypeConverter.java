@@ -42,7 +42,7 @@ public class IssueTypeConverter {
 
 	public void fillTargetFromSource(IssueTypeTO target, IssueType source) {
 		target.setId(source.getId());
-		target.setFirstname(source.getFirstname());
+		target.setFirstname(source.getName());
 		
 		
 		List<String> roles = new ArrayList<>();
@@ -53,7 +53,7 @@ public class IssueTypeConverter {
 	}
 
 	public void fillSourceFromTarget(IssueType source, IssueTypeTO target) {
-		source.setFirstname(target.getFirstname());
+		source.setFirstname(target.getName());
 		
 
 		List<String> roles = new ArrayList<>();

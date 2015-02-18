@@ -13,6 +13,10 @@ public class IssueTypeTO {
 		return id;
 	}
 
+        public String getName() {
+		return name;
+	}
+
 	public List<String> getRoles() {
 		return roles;
 	}

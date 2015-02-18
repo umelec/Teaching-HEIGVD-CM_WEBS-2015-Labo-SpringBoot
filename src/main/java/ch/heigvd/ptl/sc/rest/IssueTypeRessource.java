@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
@@ -23,12 +17,67 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-/**
- *
- * @author Robert
- */
+
 @Component
 @Path("/issuestypes")
 public class IssueTypeRessource {
-    
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private UserConverter userConverter;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		return Response.ok(userConverter.convertSourceToTarget(userRepository.findAll())).build();
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response create(UserTO userTO) {
+		User user = userRepository.save(userConverter.convertTargetToSource(userTO));
+		
+		return Response.ok(userConverter.convertSourceToTarget(user)).status(201).build();
+	}
+	
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response read(@PathParam("id") String id) {
+		User user = userRepository.findOne(id);
+		
+		if (user == null) {
+			throw new CityEngagementException(404, "Model not found.");
+		}
+		
+		return Response.ok(userConverter.convertSourceToTarget(user)).build();
+	}
+	
+	@PUT
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response update(@PathParam("id") String id, UserTO userTO) {
+		User user = userRepository.findOne(id);
+
+		if (user == null) {
+			throw new CityEngagementException(404, "Model not found.");
+		}
+		
+		userConverter.fillSourceFromTarget(user, userTO);
+		
+		user = userRepository.save(user);
+
+		return Response.ok(userConverter.convertSourceToTarget(user)).build();
+	}
+
+	@DELETE
+	@Path("/{id}")
+	public Response delete(@PathParam("id") String id) {
+		userRepository.delete(id);
+		return Response.ok().status(204).build();
+	}
 }

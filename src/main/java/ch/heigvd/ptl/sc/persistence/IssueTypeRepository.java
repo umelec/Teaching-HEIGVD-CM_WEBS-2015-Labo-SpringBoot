@@ -5,5 +5,5 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface IssueTypeRepository extends MongoRepository<IssueType, String> {
-	public List<IssueType> findById(String id);
+	public List<IssueType> findByName(String name);
 }
