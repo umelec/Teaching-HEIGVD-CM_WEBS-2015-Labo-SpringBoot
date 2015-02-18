@@ -11,7 +11,6 @@ public class IssueType {
 	
 	private String name;
 	
-
 	protected List<String> roles;
 	
 	public String getName() {

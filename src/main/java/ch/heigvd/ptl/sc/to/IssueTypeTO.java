@@ -17,10 +17,6 @@ public class IssueTypeTO {
 		return name;
 	}
         
-          public String setName(String name) {
-		return this.name = name;
-	}
-
 	public List<String> getRoles() {
 		return roles;
 	}
@@ -31,5 +27,9 @@ public class IssueTypeTO {
 	
 	public void setId(String id) {
 		this.id = id;
+	}
+         
+        public String setName(String name) {
+		return this.name = name;
 	}
 }

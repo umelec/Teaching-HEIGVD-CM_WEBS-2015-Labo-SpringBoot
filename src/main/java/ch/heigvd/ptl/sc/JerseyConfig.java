@@ -2,6 +2,7 @@ package ch.heigvd.ptl.sc;
 
 import ch.heigvd.ptl.sc.rest.UserResource;
 import ch.heigvd.ptl.sc.rest.DataResource;
+import ch.heigvd.ptl.sc.rest.IssueTypeResource;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -14,5 +15,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(CityEngagementExceptionMapper.class);
 		register(DataResource.class);
 		register(UserResource.class);
+                register(IssueTypeResource.class);
 	}
 }

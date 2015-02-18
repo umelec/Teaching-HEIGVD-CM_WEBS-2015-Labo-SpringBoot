@@ -3,7 +3,7 @@ package ch.heigvd.ptl.sc.rest;
 import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
 import ch.heigvd.ptl.sc.converter.IssueTypeConverter;
-import ch.heigvd.ptl.sc.model.User;
+import ch.heigvd.ptl.sc.model.IssueType;
 import ch.heigvd.ptl.sc.to.IssueTypeTO;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Path("/issuestypes")
-public class IssueTypeRessource {
+public class IssueTypeResource {
 	@Autowired
 	private IssueTypeRepository issueTypeRepository;
 	
@@ -31,7 +31,21 @@ public class IssueTypeRessource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response findAll() {
+            
 		return Response.ok(issueTypeConverter.convertSourceToTarget(issueTypeRepository.findAll())).build();
+	}
+        
+        @GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response read(@PathParam("id") String id) {
+		IssueType issueTpye = issueTypeRepository.findOne(id);
+		
+		if (issueTpye == null) {
+			throw new CityEngagementException(404, "Model not found.");
+		}
+		
+		return Response.ok(issueTypeConverter.convertSourceToTarget(issueTpye)).build();
 	}
         
 }
