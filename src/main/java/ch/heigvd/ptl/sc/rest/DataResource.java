@@ -164,6 +164,17 @@ public class DataResource {
 }
         
         
+        @Path("/populateit")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response populateit() throws ParseException {
+		issueTypeRepository.deleteAll();
+
+		populateIssueType();
+		
+		return Response.ok().build();
+	}
+        
         @Path("/populate")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -175,16 +186,7 @@ public class DataResource {
 		return Response.ok().build();
 	}
 	
-	@Path("/populateissuetype")
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response populateIT() throws ParseException {
-		issueTypeRepository.deleteAll();
 
-		populateIssueType();
-		
-		return Response.ok().build();
-	}
         
       
 }
