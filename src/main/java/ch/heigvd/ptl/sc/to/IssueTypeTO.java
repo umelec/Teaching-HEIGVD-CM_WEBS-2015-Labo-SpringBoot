@@ -4,7 +4,7 @@ import java.util.List;
 
 public class IssueTypeTO {
 	private String id;
-	private String name;
+	private String shortname;
 	
 
 	private List<String> roles;
@@ -14,7 +14,7 @@ public class IssueTypeTO {
 	}
 
         public String getName() {
-		return name;
+		return shortname;
 	}
         
 	public List<String> getRoles() {
@@ -29,7 +29,7 @@ public class IssueTypeTO {
 		this.id = id;
 	}
          
-        public String setName(String name) {
-		return this.name = name;
+        public String setName(String shortname) {
+		return this.shortname = shortname;
 	}
 }

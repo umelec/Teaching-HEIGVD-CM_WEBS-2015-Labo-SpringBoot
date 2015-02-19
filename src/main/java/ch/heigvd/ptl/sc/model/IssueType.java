@@ -9,16 +9,16 @@ public class IssueType {
 	@Id
 	private String id;
 	
-	private String name;
+	private String shortname;
 	
 	protected List<String> roles;
 	
 	public String getName() {
-		return name; 
+		return shortname; 
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String shortname) {
+		this.shortname = shortname;
 	}
 
 
