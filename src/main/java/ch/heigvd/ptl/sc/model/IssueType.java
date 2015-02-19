@@ -13,11 +13,11 @@ public class IssueType {
 	
 	protected List<String> roles;
 	
-	public String getName() {
+	public String getShortName() {
 		return shortName; 
 	}
 
-	public void setName(String shortName) {
+	public void setShortName(String shortName) {
 		this.shortName = shortName;
 	}
 

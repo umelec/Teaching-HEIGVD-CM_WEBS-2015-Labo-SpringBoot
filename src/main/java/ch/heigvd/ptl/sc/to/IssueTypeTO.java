@@ -13,23 +13,15 @@ public class IssueTypeTO {
 		return id;
 	}
 
-        public String getName() {
+        public String getShortName() {
 		return shortName;
 	}
-        
-	public List<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-	
+        	
 	public void setId(String id) {
 		this.id = id;
 	}
          
-        public String setName(String shortName) {
+        public String setShortName(String shortName) {
 		return this.shortName = shortName;
 	}
 }

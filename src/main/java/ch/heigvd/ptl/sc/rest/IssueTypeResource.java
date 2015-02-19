@@ -38,8 +38,8 @@ public class IssueTypeResource {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(IssueTypeTO IssueTypeTO) {
-		IssueType issueType = IssueTypeRepository.save(IssueTypeConverter.convertTargetToSource(IssueTypeTO));
+	public Response create(IssueTypeTO issueTypeTO) {
+		IssueType issueType = IssueTypeRepository.save(IssueTypeConverter.convertTargetToSource(issueTypeTO));
 		
 		return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).status(201).build();
 	}
@@ -50,7 +50,7 @@ public class IssueTypeResource {
 	public Response read(@PathParam("id") String id) {
 		IssueType issueType = IssueTypeRepository.findOne(id);
 		
-		if (IssueType == null) {
+		if (issueType == null) {
 			throw new CityEngagementException(404, "Model not found.");
 		}
 		

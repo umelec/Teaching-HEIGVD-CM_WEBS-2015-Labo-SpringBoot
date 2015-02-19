@@ -42,24 +42,13 @@ public class IssueTypeConverter {
 
 	public void fillTargetFromSource(IssueTypeTO target, IssueType source) {
 		target.setId(source.getId());
-		target.setName(source.getName());
+		target.setShortName(source.getShortName());
 		
-		
-		List<String> roles = new ArrayList<>();
-		for (String role : source.getRoles()) {
-			roles.add(role);
-		}
-		target.setRoles(roles);
 	}
 
 	public void fillSourceFromTarget(IssueType source, IssueTypeTO target) {
-		source.setName(target.getName());
+		source.setShortName(target.getShortName());
 		
-
-		List<String> roles = new ArrayList<>();
-		for (String role : target.getRoles()) {
-			roles.add(role);
-		}
-		source.setRoles(roles);
+                
 	}
 }

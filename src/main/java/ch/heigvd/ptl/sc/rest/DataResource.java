@@ -153,7 +153,7 @@ public class DataResource {
             for (int i = 0; i < 15; i++) {
                 IssueType it = new IssueType();
                 
-                it.setName(ISSUETYPE_NAME[randomInt(0, ISSUETYPE_NAME.length)]);
+                it.setShortName(ISSUETYPE_NAME[randomInt(0, ISSUETYPE_NAME.length)]);
                 
                 it = issueTypeRepository.save(it);
                 issuesTypes.add(it);
