@@ -35,8 +35,8 @@ public class IssueType {
 	}
 	
 	public boolean hasRole(String role) {
-		for (String userRole : roles) {
-			if (userRole.equals(role)) {
+		for (String issueRole : roles) {
+			if (issueRole.equals(role)) {
 				return true;
 			}
 		}

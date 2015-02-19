@@ -60,22 +60,7 @@ public class Issue {
              this.status = status;
         }
 	
-	        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         
