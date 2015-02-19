@@ -2,6 +2,7 @@ package ch.heigvd.ptl.sc;
 
 import ch.heigvd.ptl.sc.rest.UserResource;
 import ch.heigvd.ptl.sc.rest.DataResource;
+import ch.heigvd.ptl.sc.rest.IssueResource;
 import ch.heigvd.ptl.sc.rest.IssueTypeResource;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -16,5 +17,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(DataResource.class);
 		register(UserResource.class);
                 register(IssueTypeResource.class);
+                register(IssueResource.class);
 	}
 }
