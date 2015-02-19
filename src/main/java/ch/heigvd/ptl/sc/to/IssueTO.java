@@ -50,7 +50,7 @@ public class IssueTO {
 		this.description = description;
 	}
         
-        public void SetSeoCoordonnee(String geoCoordonnee) {
+        public void SetGeoCoordonnee(String geoCoordonnee) {
 		this.geoCoordonnee = geoCoordonnee;
 	}
         
