@@ -8,4 +8,6 @@ public interface ActionRepository extends MongoRepository<Action, String> {
 	public List<Action> findByAuthor(String author);
 
 	public List<Action> findByDate(String date);
+        
+        public List<Action> findByIssue(String issueId);
 }
