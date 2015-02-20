@@ -15,7 +15,6 @@ public class Issue {
         private String geoCoordonnee;
         private String status;
         
-        
         /**Objet autheur lié**/
         public String getAuthor() {
 		return author; 
@@ -34,7 +33,6 @@ public class Issue {
              this.issueType = issueType;
         }
 	
-        
         public String getDescription(){
             return description;
         }
@@ -42,7 +40,6 @@ public class Issue {
         public void setDescription(String description){
              this.description  = description;
         }
-        
         
         public String getGeoCoordonnee(){
             return geoCoordonnee;
@@ -58,36 +55,10 @@ public class Issue {
         
         public void setStatus(String status){
              this.status = status;
-        }
-	
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        }        
         
         public String getId() {
 		return id;
 	}
-
-	
-	
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 	
 }
