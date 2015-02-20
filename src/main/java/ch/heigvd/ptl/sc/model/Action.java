@@ -15,6 +15,14 @@ public class Action {
     private String date;
     private String comment;
 
+    public String getIssueId(){
+        return issueId;
+    }
+    
+    public void setIssueId(String issueid){
+        this.issueId = issueid;
+    }
+    
     public String getAuthor() {
         return author;
     }
@@ -43,4 +51,5 @@ public class Action {
         return id;
     }
 
+    
 }

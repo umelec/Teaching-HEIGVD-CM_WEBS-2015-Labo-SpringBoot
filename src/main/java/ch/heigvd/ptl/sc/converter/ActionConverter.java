@@ -47,7 +47,6 @@ public class ActionConverter {
 		target.setComment(source.getComment());
                 target.setIssueId(source.getIssueId());
 		
-		
 	}
 
 	public void fillSourceFromTarget(Action source, ActionTO target) {

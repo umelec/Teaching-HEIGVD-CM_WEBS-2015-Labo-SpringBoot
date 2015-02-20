@@ -10,6 +10,8 @@ import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.persistence.ActionRepository;
 import ch.heigvd.ptl.sc.converter.ActionConverter;
 import ch.heigvd.ptl.sc.model.Action;
+import ch.heigvd.ptl.sc.model.Issue;
+import ch.heigvd.ptl.sc.persistence.IssueRepository;
 import ch.heigvd.ptl.sc.to.ActionTO;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,6 +36,9 @@ public class ActionIssueResource {
 	@Autowired
 	private ActionConverter actionConverter;
 
+        @Autowired
+        private IssueRepository issueRepository;
+        
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -45,9 +50,24 @@ public class ActionIssueResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(@PathParam("id") String issueId, ActionTO actionTO) {
-		Action action = actionRepository.save(actionConverter.convertTargetToSource(actionTO));
+            Issue issue = issueRepository.findOne(issueId);
+            
+            Action action = actionConverter.convertTargetToSource(actionTO);
+            
+            System.out.println("******************************************************");
+            System.out.println("issue:"+issue+"|");
+            System.out.println("issue.getid:"+issue.getId()+"|");
+            System.out.println("issueId"+issueId+"|");
+            
+            action.setIssueId(issue.getId());
+            
+            Action actionSaved = actionRepository.save(action);
 		
-		return Response.ok(actionConverter.convertSourceToTarget(action)).status(201).build();
+            issue.getActions().add(actionSaved);
+            
+            issueRepository.save(issue);
+                
+		return Response.ok(actionConverter.convertSourceToTarget(actionSaved)).status(201).build();
 	}
         
 }

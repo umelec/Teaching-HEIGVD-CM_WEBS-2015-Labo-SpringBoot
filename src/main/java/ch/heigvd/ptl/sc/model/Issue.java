@@ -1,7 +1,9 @@
 package ch.heigvd.ptl.sc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -20,9 +22,21 @@ public class Issue {
 		return author; 
 	}
         
+        //pris en charge par l'orm
+        @DBRef
+        private List<Action> action = new ArrayList();
+        
         public void setAuthor(String author) {
 		this.author = author;
 	}
+
+    public List<Action> getActions() {
+        return action;
+    }
+
+    public void setActions(List<Action> action) {
+        this.action = action;
+    }
         
         /** Un ou plusieurs issueType **/
         public String getIssueType(){
@@ -50,7 +64,7 @@ public class Issue {
         }
         
          public String getStatus(){
-            return geoCoordonnee;
+            return status;
         }
         
         public void setStatus(String status){
