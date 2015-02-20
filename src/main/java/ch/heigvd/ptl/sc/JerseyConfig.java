@@ -3,6 +3,7 @@ package ch.heigvd.ptl.sc;
 import ch.heigvd.ptl.sc.rest.ActionResource;
 import ch.heigvd.ptl.sc.rest.UserResource;
 import ch.heigvd.ptl.sc.rest.DataResource;
+import ch.heigvd.ptl.sc.rest.IssueActionRessource;
 import ch.heigvd.ptl.sc.rest.IssueResource;
 import ch.heigvd.ptl.sc.rest.IssueTypeResource;
 import javax.ws.rs.ApplicationPath;
@@ -20,5 +21,6 @@ public class JerseyConfig extends ResourceConfig {
                 register(IssueTypeResource.class);
                 register(IssueResource.class);
                 register(ActionResource.class);
+                register(IssueActionRessource.class);
 	}
 }
