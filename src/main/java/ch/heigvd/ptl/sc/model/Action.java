@@ -43,10 +43,4 @@ public class Action {
         return id;
     }
 
-    public String getIssueId() {
-        return issueId;
-    }
-
-    
-    //just for heroku to deploy again 
 }

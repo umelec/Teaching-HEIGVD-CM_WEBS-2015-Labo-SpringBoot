@@ -45,6 +45,7 @@ public class ActionConverter {
 		target.setAuthor(source.getAuthor());
 		target.setDate(source.getDate());
 		target.setComment(source.getComment());
+                target.setIssueId(source.getIssueId());
 		
 		
 	}
@@ -53,6 +54,7 @@ public class ActionConverter {
 		source.setAuthor(target.getAuthor());
 		source.setDate(target.getDate());
 		source.setComment(target.getComment());
+                source.setIssueId(target.getIssueId());
 
 	}
 }

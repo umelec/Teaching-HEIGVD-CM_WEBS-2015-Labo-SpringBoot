@@ -25,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/action/issue/{id}")
+@Path("/issues/{id}/actions")
 public class ActionIssueResource {
     
     @Autowired
@@ -44,7 +44,7 @@ public class ActionIssueResource {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(ActionTO actionTO) {
+	public Response create(@PathParam("id") String issueId, ActionTO actionTO) {
 		Action action = actionRepository.save(actionConverter.convertTargetToSource(actionTO));
 		
 		return Response.ok(actionConverter.convertSourceToTarget(action)).status(201).build();
