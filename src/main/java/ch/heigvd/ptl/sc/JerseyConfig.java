@@ -1,5 +1,6 @@
 package ch.heigvd.ptl.sc;
 
+import ch.heigvd.ptl.sc.rest.ActionResource;
 import ch.heigvd.ptl.sc.rest.UserResource;
 import ch.heigvd.ptl.sc.rest.DataResource;
 import ch.heigvd.ptl.sc.rest.IssueResource;
@@ -18,5 +19,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(UserResource.class);
                 register(IssueTypeResource.class);
                 register(IssueResource.class);
+                register(ActionResource.class);
 	}
 }
