@@ -82,10 +82,12 @@ public class DataResource {
 	
 	@Autowired
 	private UserRepository userRepository;
+        @Autowired
         private IssueTypeRepository issueTypeRepository;
 	
 	@Autowired
 	private UserConverter userConverter;
+        @Autowired
         private IssueTypeConverter issueTypeConverter;
 	
 	private List<User> users = new ArrayList<>();
