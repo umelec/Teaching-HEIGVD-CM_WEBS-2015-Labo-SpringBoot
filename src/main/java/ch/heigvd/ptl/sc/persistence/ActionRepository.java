@@ -9,5 +9,5 @@ public interface ActionRepository extends MongoRepository<Action, String> {
 
 	public List<Action> findByDate(String date);
         
-        public List<Action> findByIssue(String issueId);
+        public List<Action> findByIssueId(String issueId);
 }

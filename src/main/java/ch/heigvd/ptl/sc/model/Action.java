@@ -9,7 +9,7 @@ public class Action {
 
     @Id
     private String id;
-    private String issueid;
+    private String issueId;
 
     private String author;
     private String date;
@@ -44,7 +44,9 @@ public class Action {
     }
 
     public String getIssueId() {
-        return issueid;
+        return issueId;
     }
 
+    
+    //just for heroku to deploy again 
 }
