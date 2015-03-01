@@ -11,7 +11,7 @@ public class ActionTO {
     private String issueid;
 
     public String getId() {
-        return "localhost:8080/api/actions/" + id;
+        return "http://localhost:8080/api/actions/" + id;
     }
 
     public String getIssueId() {
