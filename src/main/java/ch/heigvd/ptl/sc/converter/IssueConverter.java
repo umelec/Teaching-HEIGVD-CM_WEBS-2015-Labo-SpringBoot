@@ -48,7 +48,7 @@ public class IssueConverter {
         target.setDescription(source.getDescription());
         target.SetGeoCoordonnee(source.getGeoCoordonnee());
         target.SetStatus(source.getStatus());
-
+        target.setDate(source.getDate());
     }
 
     public void fillSourceFromTarget(Issue source, IssueTO target) {
@@ -57,6 +57,6 @@ public class IssueConverter {
         source.setDescription(target.getDescription());
         source.setGeoCoordonnee(target.getGeoCoordonnee());
         source.setStatus(target.getStatus());
-
+        source.setDate(target.getDate());
     }
 }

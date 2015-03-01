@@ -1,12 +1,8 @@
 package ch.heigvd.ptl.sc.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,7 +14,6 @@ public class Issue {
 
     @Id
     private String id;
-
     private String author;
     private String issueType;
     private String description;
@@ -26,9 +21,7 @@ public class Issue {
     private String status;
     private Date date;
 
-    /**
-     * Objet autheur lié*
-     */
+
     public String getAuthor() {
         return author;
     }
@@ -49,9 +42,6 @@ public class Issue {
         this.action = action;
     }
 
-    /**
-     * Un ou plusieurs issueType *
-     */
     public String getIssueType() {
         return issueType;
     }
@@ -84,14 +74,14 @@ public class Issue {
         this.status = status;
     }
 
-    public String getDate() {
-        return "" + date + "";
+    public Date getDate() {
+        System.out.println("....");
+        return date ;
     }
 
-    public void setDate(String dateInput) throws ParseException {
-        DateFormat format = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);
-        Date date = format.parse(dateInput);
+    public void setDate(Date date) {
         this.date = date;
+        System.out.println("issue"+date);
     }
 
     public String getId() {
