@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Issue {
 
+
+
     @Id
     private String id;
     private String author;
