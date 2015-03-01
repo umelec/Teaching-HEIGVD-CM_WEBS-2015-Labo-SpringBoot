@@ -3,50 +3,51 @@ package ch.heigvd.ptl.sc.to;
 import java.util.List;
 
 public class UserTO {
-	private String id;
-	private String firstname;
-	private String lastname;
-	private String phone;
 
-	private List<String> roles;
-	
-	public String getId() {
-		return id;
-	}
+    private String id;
+    private String firstname;
+    private String lastname;
+    private String phone;
 
-	public String getFirstname() {
-		return firstname;
-	}
+    private List<String> roles;
 
-	public String getLastname() {
-		return lastname;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getFirstname() {
+        return firstname;
+    }
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-	public List<String> getRoles() {
-		return roles;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

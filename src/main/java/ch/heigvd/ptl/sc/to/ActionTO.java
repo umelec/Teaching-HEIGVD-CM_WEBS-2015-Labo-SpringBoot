@@ -41,8 +41,8 @@ public class ActionTO {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
-    public void setIssueId(String issueid){
+
+    public void setIssueId(String issueid) {
         this.issueid = issueid;
     }
 

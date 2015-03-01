@@ -5,5 +5,6 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface IssueRepository extends MongoRepository<Issue, String> {
-	public List<Issue> findByAuthor(String author);
+
+    public List<Issue> findByAuthor(String author);
 }

@@ -21,63 +21,64 @@ import org.springframework.stereotype.Component;
 @Component
 @Path("/issues")
 public class IssueResource {
-	@Autowired
-	private IssueRepository issueRepository;
-	
-	@Autowired
-	private IssueConverter issueConverter;
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response findAll() {
-		return Response.ok(issueConverter.convertSourceToTarget(issueRepository.findAll())).build();
-	}
+    @Autowired
+    private IssueRepository issueRepository;
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(IssueTO issueTO) {
-		Issue issue = issueRepository.save(issueConverter.convertTargetToSource(issueTO));
-		
-		return Response.ok(issueConverter.convertSourceToTarget(issue)).status(201).build();
-	}
-	
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") String id) {
-		Issue issue = issueRepository.findOne(id);
-		
-		if (issue == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		return Response.ok(issueConverter.convertSourceToTarget(issue)).build();
-	}
-	
-	@PUT
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") String id, IssueTO issueTO) {
-		Issue issue = issueRepository.findOne(id);
+    @Autowired
+    private IssueConverter issueConverter;
 
-		if (issue == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		issueConverter.fillSourceFromTarget(issue, issueTO);
-		
-		issue = issueRepository.save(issue);
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findAll() {
+        return Response.ok(issueConverter.convertSourceToTarget(issueRepository.findAll())).build();
+    }
 
-		return Response.ok(issueConverter.convertSourceToTarget(issue)).build();
-	}
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(IssueTO issueTO) {
+        Issue issue = issueRepository.save(issueConverter.convertTargetToSource(issueTO));
 
-	@DELETE
-	@Path("/{id}")
-	public Response delete(@PathParam("id") String id) {
-		issueRepository.delete(id);
-		return Response.ok().status(204).build();
-	}
+        return Response.ok(issueConverter.convertSourceToTarget(issue)).status(201).build();
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response read(@PathParam("id") String id) {
+        Issue issue = issueRepository.findOne(id);
+
+        if (issue == null) {
+            throw new CityEngagementException(404, "Model not found.");
+        }
+
+        return Response.ok(issueConverter.convertSourceToTarget(issue)).build();
+    }
+
+    @PUT
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(@PathParam("id") String id, IssueTO issueTO) {
+        Issue issue = issueRepository.findOne(id);
+
+        if (issue == null) {
+            throw new CityEngagementException(404, "Model not found.");
+        }
+
+        issueConverter.fillSourceFromTarget(issue, issueTO);
+
+        issue = issueRepository.save(issue);
+
+        return Response.ok(issueConverter.convertSourceToTarget(issue)).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") String id) {
+        issueRepository.delete(id);
+        return Response.ok().status(204).build();
+    }
 }
