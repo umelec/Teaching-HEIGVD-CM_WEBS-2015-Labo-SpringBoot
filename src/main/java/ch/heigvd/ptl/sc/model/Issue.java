@@ -16,6 +16,7 @@ public class Issue {
 	private String description;
         private String geoCoordonnee;
         private String status;
+        private String date;
         
         /**Objet autheur lié**/
         public String getAuthor() {
