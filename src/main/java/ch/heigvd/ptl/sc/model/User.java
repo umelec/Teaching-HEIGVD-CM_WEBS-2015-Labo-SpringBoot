@@ -1,7 +1,9 @@
 package ch.heigvd.ptl.sc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -9,12 +11,22 @@ public class User {
 
     @Id
     private String id;
-
     private String firstname;
     private String lastname;
     private String phone;
 
     protected List<String> roles;
+    
+     @DBRef
+    private List<Issue> issue = new ArrayList();
+
+    public List<Issue> getIssues() {
+        return issue;
+    }
+
+    public void setIssues(List<Issue> issue) {
+        this.issue = issue;
+    }
 
     public String getFirstname() {
         return firstname;

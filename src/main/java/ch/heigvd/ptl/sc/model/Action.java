@@ -10,7 +10,6 @@ public class Action {
     @Id
     private String id;
     private String issueId;
-
     private String author;
     private String date;
     private String comment;

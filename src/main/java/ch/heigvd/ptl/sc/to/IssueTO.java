@@ -20,7 +20,7 @@ public class IssueTO {
     }
 
     public String getAuthor() {
-        return author;
+        return "http://localhost:8080/api/users/" +author;
     }
 
     public String getIssueType() {

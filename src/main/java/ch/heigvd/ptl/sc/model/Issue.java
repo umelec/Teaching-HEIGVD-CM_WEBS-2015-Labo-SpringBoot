@@ -10,17 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Issue {
 
-
-
     @Id
     private String id;
+    private String userId;
     private String author;
     private String issueType;
     private String description;
     private String geoCoordonnee;
     private String status;
     private Date date;
-
+    
 
     public String getAuthor() {
         return author;
@@ -42,8 +41,16 @@ public class Issue {
         this.action = action;
     }
 
+    public String getUserId() {
+        return "http://localhost:8080/api/authors/" +userId;
+    }
+
+    public void setUserId(String userid) {
+        this.userId = userid;
+    }
+
     public String getIssueType() {
-        return issueType;
+        return "http://localhost:8080/api/issuestypes/" +issueType;
     }
 
     public void setIssueType(String issueType) {
@@ -76,12 +83,12 @@ public class Issue {
 
     public Date getDate() {
         System.out.println("....");
-        return date ;
+        return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
-        System.out.println("issue"+date);
+        System.out.println("issue" + date);
     }
 
     public String getId() {
