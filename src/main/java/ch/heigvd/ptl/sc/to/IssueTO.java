@@ -1,5 +1,6 @@
 package ch.heigvd.ptl.sc.to;
 
+import java.util.Date;
 import java.util.List;
 
 public class IssueTO {
@@ -11,7 +12,7 @@ public class IssueTO {
     private String description;
     private String geoCoordonnee;
     private String status;
-
+    private Date date;
     private List<String> roles;
 
     public String getId() {
@@ -37,10 +38,11 @@ public class IssueTO {
     public String getStatus() {
         return status;
     }
+    
+    public Date getDate() {
+        return date;
+    }
 
-    /**
-     * Sera un object -> user *
-     */
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -63,5 +65,11 @@ public class IssueTO {
 
     public void setId(String id) {
         this.id = id;
+        System.out.println("id");
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+        System.out.println(date);
     }
 }
