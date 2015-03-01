@@ -11,7 +11,7 @@ public class ActionTO {
     private String issueid;
 
     public String getId() {
-        return id;
+        return "http://localhost:8080/api/actions/" + id;
     }
 
     public String getIssueId() {
@@ -41,8 +41,8 @@ public class ActionTO {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
-    public void setIssueId(String issueid){
+
+    public void setIssueId(String issueid) {
         this.issueid = issueid;
     }
 

@@ -3,63 +3,65 @@ package ch.heigvd.ptl.sc.to;
 import java.util.List;
 
 public class IssueTO {
-	private String id;
-	
-	private String author;
-	private String issueType;
-	private String description;
-        private String geoCoordonnee;
-        private String status;
 
-	private List<String> roles;
-	
-	public String getId() {
-		return id;
-	}
+    private String id;
 
-	public String getAuthor() {
-		return author;
-	}
+    private String author;
+    private String issueType;
+    private String description;
+    private String geoCoordonnee;
+    private String status;
 
-	public String getIssueType() {
-		return issueType;
-	}
+    private List<String> roles;
 
-	public String getDescription() {
-		return description;
-	}
-        
-        public String getGeoCoordonnee() {
-		return geoCoordonnee;
-	}
+    public String getId() {
+        return "http://localhost:8080/api/issues/" + id;
+    }
 
-        public String getStatus() {
-		return status;
-	}
-        
-        /**Sera un object -> user **/
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public void setIssueType(String issueType) {
-		this.issueType = issueType;
-	}
+    public String getIssueType() {
+        return issueType;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-        
-        public void SetGeoCoordonnee(String geoCoordonnee) {
-		this.geoCoordonnee = geoCoordonnee;
-	}
-        
-        public void SetStatus(String status) {
-		this.status = status;
-	}
-        
+    public String getDescription() {
+        return description;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getGeoCoordonnee() {
+        return geoCoordonnee;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Sera un object -> user *
+     */
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setIssueType(String issueType) {
+        this.issueType = issueType;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void SetGeoCoordonnee(String geoCoordonnee) {
+        this.geoCoordonnee = geoCoordonnee;
+    }
+
+    public void SetStatus(String status) {
+        this.status = status;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

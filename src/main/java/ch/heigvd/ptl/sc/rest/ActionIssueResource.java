@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
@@ -29,45 +28,45 @@ import org.springframework.stereotype.Component;
 @Component
 @Path("/issues/{id}/actions")
 public class ActionIssueResource {
-    
+
     @Autowired
-	private ActionRepository actionRepository;
-	
-	@Autowired
-	private ActionConverter actionConverter;
+    private ActionRepository actionRepository;
 
-        @Autowired
-        private IssueRepository issueRepository;
-        
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response findAll() {
-		return Response.ok(actionConverter.convertSourceToTarget(actionRepository.findAll())).build();
-	}
+    @Autowired
+    private ActionConverter actionConverter;
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(@PathParam("id") String issueId, ActionTO actionTO) {
-            Issue issue = issueRepository.findOne(issueId);
-            
-            Action action = actionConverter.convertTargetToSource(actionTO);
-            
-            System.out.println("******************************************************");
-            System.out.println("issue:"+issue+"|");
-            System.out.println("issue.getid:"+issue.getId()+"|");
-            System.out.println("issueId"+issueId+"|");
-            
-            action.setIssueId(issue.getId());
-            
-            Action actionSaved = actionRepository.save(action);
-		
-            issue.getActions().add(actionSaved);
-            
-            issueRepository.save(issue);
-                
-		return Response.ok(actionConverter.convertSourceToTarget(actionSaved)).status(201).build();
-	}
-        
+    @Autowired
+    private IssueRepository issueRepository;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findAll() {
+        return Response.ok(actionConverter.convertSourceToTarget(actionRepository.findAll())).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(@PathParam("id") String issueId, ActionTO actionTO) {
+        Issue issue = issueRepository.findOne(issueId);
+
+        Action action = actionConverter.convertTargetToSource(actionTO);
+
+        System.out.println("******************************************************");
+        System.out.println("issue:" + issue + "|");
+        System.out.println("issue.getid:" + issue.getId() + "|");
+        System.out.println("issueId" + issueId + "|");
+
+        action.setIssueId(issue.getId());
+
+        Action actionSaved = actionRepository.save(action);
+
+        issue.getActions().add(actionSaved);
+
+        issueRepository.save(issue);
+
+        return Response.ok(actionConverter.convertSourceToTarget(actionSaved)).status(201).build();
+    }
+
 }

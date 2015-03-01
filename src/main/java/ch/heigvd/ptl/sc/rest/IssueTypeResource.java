@@ -1,6 +1,5 @@
 package ch.heigvd.ptl.sc.rest;
 
-
 import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.converter.IssueTypeConverter;
 import ch.heigvd.ptl.sc.model.IssueType;
@@ -22,63 +21,64 @@ import org.springframework.stereotype.Component;
 @Component
 @Path("/issuestypes")
 public class IssueTypeResource {
-	@Autowired
-	private IssueTypeRepository IssueTypeRepository;
-	
-	@Autowired
-	private IssueTypeConverter IssueTypeConverter;
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response findAll() {
-		return Response.ok(IssueTypeConverter.convertSourceToTarget(IssueTypeRepository.findAll())).build();
-	}
+    @Autowired
+    private IssueTypeRepository IssueTypeRepository;
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(IssueTypeTO issueTypeTO) {
-		IssueType issueType = IssueTypeRepository.save(IssueTypeConverter.convertTargetToSource(issueTypeTO));
-		
-		return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).status(201).build();
-	}
-	
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") String id) {
-		IssueType issueType = IssueTypeRepository.findOne(id);
-		
-		if (issueType == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).build();
-	}
-	
-	@PUT
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") String id, IssueTypeTO IssueTypeTO) {
-		IssueType issueType = IssueTypeRepository.findOne(id);
+    @Autowired
+    private IssueTypeConverter IssueTypeConverter;
 
-		if (issueType == null) {
-			throw new CityEngagementException(404, "Model not found.");
-		}
-		
-		IssueTypeConverter.fillSourceFromTarget(issueType, IssueTypeTO);
-		
-		issueType = IssueTypeRepository.save(issueType);
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findAll() {
+        return Response.ok(IssueTypeConverter.convertSourceToTarget(IssueTypeRepository.findAll())).build();
+    }
 
-		return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).build();
-	}
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(IssueTypeTO issueTypeTO) {
+        IssueType issueType = IssueTypeRepository.save(IssueTypeConverter.convertTargetToSource(issueTypeTO));
 
-	@DELETE
-	@Path("/{id}")
-	public Response delete(@PathParam("id") String id) {
-		IssueTypeRepository.delete(id);
-		return Response.ok().status(204).build();
-	}
+        return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).status(201).build();
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response read(@PathParam("id") String id) {
+        IssueType issueType = IssueTypeRepository.findOne(id);
+
+        if (issueType == null) {
+            throw new CityEngagementException(404, "Model not found.");
+        }
+
+        return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).build();
+    }
+
+    @PUT
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(@PathParam("id") String id, IssueTypeTO IssueTypeTO) {
+        IssueType issueType = IssueTypeRepository.findOne(id);
+
+        if (issueType == null) {
+            throw new CityEngagementException(404, "Model not found.");
+        }
+
+        IssueTypeConverter.fillSourceFromTarget(issueType, IssueTypeTO);
+
+        issueType = IssueTypeRepository.save(issueType);
+
+        return Response.ok(IssueTypeConverter.convertSourceToTarget(issueType)).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") String id) {
+        IssueTypeRepository.delete(id);
+        return Response.ok().status(204).build();
+    }
 }

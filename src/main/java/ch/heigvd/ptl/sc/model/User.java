@@ -6,57 +6,58 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class User {
-	@Id
-	private String id;
-	
-	private String firstname;
-	private String lastname;
-	private String phone;
 
-	protected List<String> roles;
-	
-	public String getFirstname() {
-		return firstname; 
-	}
+    @Id
+    private String id;
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    private String firstname;
+    private String lastname;
+    private String phone;
 
-	public String getLastname() {
-		return lastname;
-	}
+    protected List<String> roles;
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public String getFirstname() {
+        return firstname;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public List<String> getRoles() {
-		return roles;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-	
-	public boolean hasRole(String role) {
-		for (String userRole : roles) {
-			if (userRole.equals(role)) {
-				return true;
-			}
-		}
-		return false;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public boolean hasRole(String role) {
+        for (String userRole : roles) {
+            if (userRole.equals(role)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

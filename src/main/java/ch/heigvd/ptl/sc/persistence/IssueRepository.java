@@ -14,4 +14,5 @@ public interface IssueRepository extends MongoRepository<Issue, String> {
         
         @Query("{'status' : 'unsolved'}")
         public List<Issue> findUnsolved();
+
 }

@@ -110,4 +110,5 @@ public class IssueResource {
 		List<Issue> issues = issueRepository.findUnsolved();
 		return Response.ok(issueConverter.convertSourceToTarget(issues)).build();
 	}
+
 }
