@@ -4,6 +4,7 @@ import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.persistence.IssueRepository;
 import ch.heigvd.ptl.sc.converter.IssueConverter;
 import ch.heigvd.ptl.sc.model.Issue;
+import ch.heigvd.ptl.sc.model.User;
 import ch.heigvd.ptl.sc.to.IssueTO;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -18,6 +19,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,13 +32,40 @@ public class IssueResource {
 	
 	@Autowired
 	private IssueConverter issueConverter;
-
-	@GET
+        
+         @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response findAll() {
-		return Response.ok(issueConverter.convertSourceToTarget(issueRepository.findAll())).build();
+	public Response findAll(
+                @QueryParam("page") String pageParam,
+                @QueryParam("sort") String sortParam,
+                @QueryParam("order") String orderParam) {
+            
+            Sort.Direction order;
+            
+            if (orderParam != null && "desc".compareToIgnoreCase(orderParam) == 0)
+                order = Sort.Direction.DESC;
+            else
+                order = Sort.Direction.ASC;
+            
+            if(sortParam == null)
+                sortParam = "id";
+            
+            Sort sort = new Sort(order, sortParam);
+            List<Issue> issues;
+            
+            try {
+                int page = Integer.parseInt(pageParam);
+                Pageable pageable = new PageRequest(page, 5, sort);
+                issues = issueRepository.findAll(pageable).getContent();
+            } catch (NumberFormatException e) {
+                issues = issueRepository.findAll();
+            }
+            
+            return Response.ok(issueConverter.convertSourceToTarget(issues)).build();
 	}
+        
+	
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +113,7 @@ public class IssueResource {
 		issueRepository.delete(id);
 		return Response.ok().status(204).build();
 	}
+       
         
         
 	@GET
@@ -99,6 +131,14 @@ public class IssueResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response findBetweenDate(@PathParam("type") String type) {
 		List<Issue> issues = issueRepository.findByIssueType(type);
+		return Response.ok(issueConverter.convertSourceToTarget(issues)).build();
+	}
+        
+        @GET
+	@Path("author/{author}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findByAuthor(@QueryParam("author") String author) {
+		List<Issue> issues = issueRepository.findByAuthor(author);
 		return Response.ok(issueConverter.convertSourceToTarget(issues)).build();
 	}
         
