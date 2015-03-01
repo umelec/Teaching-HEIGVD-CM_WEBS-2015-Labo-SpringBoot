@@ -10,7 +10,7 @@ public class IssueTypeTO {
     private List<String> roles;
 
     public String getId() {
-        return id;
+        return "localhost:8080/api/issuestypes/" + id;
     }
 
     public String getShortName() {

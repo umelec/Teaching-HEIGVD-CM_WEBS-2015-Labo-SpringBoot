@@ -12,7 +12,7 @@ public class UserTO {
     private List<String> roles;
 
     public String getId() {
-        return id;
+        return "http://localhost:8080/api/users/"+id;
     }
 
     public String getFirstname() {
