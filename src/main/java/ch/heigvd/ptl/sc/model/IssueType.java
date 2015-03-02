@@ -30,16 +30,5 @@ public class IssueType {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public boolean hasRole(String role) {
-        for (String issueRole : roles) {
-            if (issueRole.equals(role)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 }
