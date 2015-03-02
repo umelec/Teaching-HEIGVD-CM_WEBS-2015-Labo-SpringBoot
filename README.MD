@@ -39,7 +39,7 @@ $> mvn clean package spring-boot:run
 
 ## Test
 
-The appliation is runing on `http://localhost:8080`. You should be able to access the following:
+The appliation is runing on `http://sheltered-headland-4650.herokuapp.com`. You should be able to access the following:
 
 ### Data population
 

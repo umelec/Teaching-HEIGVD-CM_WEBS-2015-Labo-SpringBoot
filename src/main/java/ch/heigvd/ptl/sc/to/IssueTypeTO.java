@@ -10,7 +10,7 @@ public class IssueTypeTO {
     private List<String> roles;
 
     public String getId() {
-        return "http://localhost:8080/api/issuestypes/" + id;
+        return "http://sheltered-headland-4650.herokuapp.com/api/issuestypes/" + id;
     }
 
     public String getShortName() {

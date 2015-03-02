@@ -16,11 +16,11 @@ public class IssueTO {
     private List<String> roles;
 
     public String getId() {
-        return "http://localhost:8080/api/issues/" + id;
+        return "http://sheltered-headland-4650.herokuapp.com/api/issues/" + id;
     }
 
     public String getAuthor() {
-        return "http://localhost:8080/api/users/" +author;
+        return "http://sheltered-headland-4650.herokuapp.com/api/users/" +author;
     }
 
     public String getIssueType() {

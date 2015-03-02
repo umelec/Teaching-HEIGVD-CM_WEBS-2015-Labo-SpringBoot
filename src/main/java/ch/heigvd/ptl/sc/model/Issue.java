@@ -42,7 +42,7 @@ public class Issue {
     }
 
     public String getUserId() {
-        return "http://localhost:8080/api/authors/" +userId;
+        return "http://sheltered-headland-4650.herokuapp.com/api/authors/" +userId;
     }
 
     public void setUserId(String userid) {
@@ -50,7 +50,7 @@ public class Issue {
     }
 
     public String getIssueType() {
-        return "http://localhost:8080/api/issuestypes/" +issueType;
+        return "http://sheltered-headland-4650.herokuapp.com/api/issuestypes/" +issueType;
     }
 
     public void setIssueType(String issueType) {
