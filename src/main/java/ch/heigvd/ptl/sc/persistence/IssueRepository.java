@@ -13,16 +13,13 @@ public interface IssueRepository extends MongoRepository<Issue, String> {
         public Page<Issue> findAll(Pageable pageable);
     
 	public List<Issue> findByAuthor(String author);
+        public List<Issue> findByIssueType(String issueType);
+        
+        public List<Issue> findBy(String issueType);
         
         public List<Issue> findByDateBetween(String start, String end);
-        
-        public List<Issue> findByIssueType(String issueType);
         
         @Query("{'status' : 'unsolved'}")
         public List<Issue> findUnsolved();
         
-        
-        
-        
-
 }
