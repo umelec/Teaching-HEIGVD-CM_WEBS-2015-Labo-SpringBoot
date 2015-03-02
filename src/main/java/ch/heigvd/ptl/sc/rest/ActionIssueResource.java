@@ -49,15 +49,15 @@ public class ActionIssueResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(@PathParam("id") String issueId, ActionTO actionTO) {
+        
+        System.out.println(""+issueId);
+        
+        //problème pour récupérer l'issue "issueId" is set 
         Issue issue = issueRepository.findOne(issueId);
-
-        Action action = actionConverter.convertTargetToSource(actionTO);
-
-        System.out.println("******************************************************");
-        System.out.println("issue:" + issue + "|");
-        System.out.println("issue.getid:" + issue.getId() + "|");
-        System.out.println("issueId" + issueId + "|");
-
+        // donc "issue" = null :-(
+        
+        Action action = actionConverter.convertTargetToSource(actionTO);     
+        
         action.setIssueId(issue.getId());
 
         Action actionSaved = actionRepository.save(action);
